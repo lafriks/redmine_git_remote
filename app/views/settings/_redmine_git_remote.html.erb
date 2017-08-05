@@ -14,3 +14,11 @@
                      name="settings[git_remote_url_prefix_default]">
   <em class="info"><%= l(:note_default_remote_repo_url_prefix) %></em>
 </p>
+
+<p>
+  <%= content_tag(:label, l(:label_delete_unused_repo_from_disk)) %>
+  <%= check_box_tag('settings[delete_unused_repo_from_disk]', true, @settings['delete_unused_repo_from_disk']) %>
+  <em class="info">
+	<%= l(:note_delete_unused_repo_from_disk) %>
+  </em>
+</p>

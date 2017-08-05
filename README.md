@@ -45,10 +45,9 @@ Some extra tips:
 
 ## Configuration
 
-The plugin offers two configuration options:
-
 * Local Repository Path (git_local_path) - Path, where repositories are created on the local system. This defaults to `REDMINE_PLUGINS_PATH/redmine_git_remote/repos`.
 * Remote Repository Url Prefix - Default Prefix of the Remote Repository. The Default Prefix for Remote Repositories, defaults to an empty value. If this value is set, this prefix is shown in the Clone URL field of a repository by default, but can be overwritten by the user (eg. https://github.com/).
+* Always Delete - Check to enable always deleting of the local repository from the file system when a repository is removed and not used by another project. The default is to only delete local repositories from the file system if the local repository is in the plugin path. 
 
 ![](doc/settings.jpg)
 
@@ -97,8 +96,6 @@ Notes:
 * Tested on Redmine 3.3.1
 * Currently alpha state, use at your own risk. Given possible security risks of shelling out,
   we recommend using this plugin only if all RedMine project admins are trusted users.
-* This plugin doesn't clean-up (delete) cloned repos from the file system when the record
-  is deleted from Redmine.
 * Currently Redmine will crash if this plugin is uninstalled, as rails can't
   seem to handle model classes disappearing while db records reference them.
   This snippet should make the error go away:

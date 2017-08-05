@@ -87,12 +87,10 @@ class Repository::GitRemote < Repository::Git
     errors.add :extra_clone_url, err if err
   end
 
-  ## Deletes repository directory if it's inside plugin directory (i.e. belongs to plugin)
-  ## and this repo is not used by other repositories
+  ## Deletes repository directory if it is not used by other repositories
   def remove_unused_repos
-    inside_plugin_bundle = self.clone_path.include? PATH_PREFIX
     nobody_else_need_it = Repository.where(url: self.url).count <= 1
-    if inside_plugin_bundle && nobody_else_need_it
+    if Setting.plugin_redmine_git_remote["delete_unused_repo_from_disk"] && nobody_else_need_it
       system "rm -Rf #{self.clone_path}"
     end
   end
