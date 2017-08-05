@@ -14,13 +14,11 @@ module RedmineGitRemote
 
       rout, wout = IO.pipe
       rerr, werr = IO.pipe
-
-      pid = Process.spawn(*cmd) do
-        rerr.close
-        rout.close
-        STDERR.reopen(werr)
-        STDOUT.reopen(wout)
-      end
+      
+      # Redirect the childs STDOUT and STDERR to the parent.
+      # :spawn closes all non-standard descriptors by default, so rout, wout, rerr and
+      # werr will all be closed in the child process.
+      pid = Process.spawn(*cmd, :out=>wout, :err=>werr)
 
       wout.close
       werr.close
