@@ -12,10 +12,7 @@ module RedmineGitRemote
                                          :label => l(:field_path_to_repository))
         local_path_note = content_tag('em', l(:text_git_remote_path_note), :class => 'info')
 
-        remote_url_prefix = Setting.plugin_redmine_git_remote["git_remote_url_prefix_default"].presence || ''
-
         remote_url_tag = form.text_field(:extra_clone_url, :size => 60, :required => true,
-                                         :value => remote_url_prefix,
                                          :disabled => !repository.safe_attribute?('url'))
         remote_url_note = content_tag('em', l(:text_git_remote_url_note), :class => 'info')
 
