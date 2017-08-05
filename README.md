@@ -47,7 +47,8 @@ Some extra tips:
 
 * Local Repository Path (git_local_path) - Path, where repositories are created on the local system. This defaults to `REDMINE_PLUGINS_PATH/redmine_git_remote/repos`.
 * Remote Repository Url Prefix - Default Prefix of the Remote Repository. The Default Prefix for Remote Repositories, defaults to an empty value. If this value is set, this prefix is shown in the Clone URL field of a repository by default, but can be overwritten by the user (eg. https://github.com/).
-* Always Delete - Check to enable always deleting of the local repository from the file system when a repository is removed and not used by another project. The default is to only delete local repositories from the file system if the local repository is in the plugin path. 
+* Delete Unused Local Repository From Disk - When deleting a repository, also delete the local repository from disk if not used by any other repository. CAUTION, only enable if no other application uses the local repository on disk.
+* Fetch New Repository - When creating a new repository then do an initial fetch directly. (Why not???) 
 
 ![](doc/settings.jpg)
 
@@ -69,7 +70,7 @@ it will prefill the Identifier and filesystem path fields as follows:
 * Identifier: `vagrant-vbox-snapshot`
 * Path: `REDMINE_PLUGINS_PATH/redmine_git_remote/repos/github.com/dergachev/vagrant-vbox-snapshot` (Note: The Path can be configured using the above mentioned method, but can also be entered for each repository.)
 
-Once the remote URL is validated, the plugin creates an [empty clone](http://stackoverflow.com/questions/895819/whats-the-most-straightforward-way-to-clone-an-empty-bare-git-repository) at the specified path.
+Once the remote URL is validated, the plugin creates an [empty clone](http://stackoverflow.com/questions/895819/whats-the-most-straightforward-way-to-clone-an-empty-bare-git-repository) at the specified path, and if 'Fetch New Repository' option is enabled the remote repository is fetched.
 
 This plugin hooks into the core `Repository.fetch_changesets` to automatically
 run `git fetch --all` on all GitRemote managed repositories as Redmine is about
