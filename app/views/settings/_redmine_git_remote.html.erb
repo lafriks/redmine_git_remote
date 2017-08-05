@@ -22,3 +22,11 @@
 	<%= l(:note_delete_unused_repo_from_disk) %>
   </em>
 </p>
+
+<p>
+  <%= content_tag(:label, l(:label_fetch_when_created)) %>
+  <%= check_box_tag('settings[fetch_when_created]', true, @settings['fetch_when_created']) %>
+  <em class="info">
+	<%= l(:note_fetch_when_created) %>
+  </em>
+</p>

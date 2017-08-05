@@ -84,7 +84,11 @@ class Repository::GitRemote < Repository::Git
     self.url = url_prefix + p[:path] if url.empty?
 
     err = ensure_possibly_empty_clone_exists
-    errors.add :extra_clone_url, err if err
+    if err
+      errors.add :extra_clone_url, err
+    elsif Setting.plugin_redmine_git_remote["fetch_when_created"]
+      self.fetch_changesets
+    end
   end
 
   ## Deletes repository directory if it is not used by other repositories

@@ -1,3 +1,4 @@
 git_local_path: ''
 git_remote_url_prefix: ''
 delete_unused_repo_from_disk: 0
+fetch_when_created: 1
