@@ -1,4 +1,10 @@
 en:
   field_extra_clone_url: Clone URL
+  label_default_local_repo_path: Local Repository Path
+  note_default_local_repo_path: The default path for new local repositories.
+  label_default_remote_repo_url_prefix: Remote Repository Url Prefix
+  note_default_remote_repo_url_prefix: Default Prefix of the Remote Repository.
   text_git_remote_url_note: The URL to clone from.
   text_git_remote_path_note: The absolute filesystem path to clone to. Leave blank to auto-populate from URL.
+  label_delete_unused_repo_from_disk: Delete Unused Local Repository From Disk
+  note_delete_unused_repo_from_disk: When deleting a repository, also delete the local repository from disk if not used by any other repository. CAUTION, only enable if no other application uses the local repository on disk.
