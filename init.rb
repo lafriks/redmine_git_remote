@@ -15,9 +15,6 @@ Redmine::Plugin.register :redmine_git_remote do
   settings :default => {'git_local_path_default' => options['git_local_path'],
                         'git_remote_url_prefix_default' => options['git_remote_url_prefix']},
                         :partial => 'settings/redmine_git_remote'
-  should_be_disabled false if Redmine::Plugin.installed?(:easy_extensions)
 end
 
-unless Redmine::Plugin.installed?(:easy_extensions)
-  require_relative 'after_init'
-end
+require_relative 'after_init'
