@@ -12,6 +12,8 @@ class Repository::GitRemote < Repository::Git
   before_validation :initialize_clone
   before_destroy :remove_unused_repos
 
+  safe_attributes 'extra_info', :if => lambda {|repository, _user| repository.new_record?}
+
   def extra_clone_url
     return nil unless extra_info
     extra_info["extra_clone_url"]
