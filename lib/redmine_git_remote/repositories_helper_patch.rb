@@ -19,7 +19,7 @@ module RedmineGitRemote
                                          :disabled => !repository.safe_attribute?('url'), name: 'repository[extra_info][extra_clone_url]')
         remote_url_note = content_tag('em', l(:text_git_remote_url_note), :class => 'info')
 
-        git_remote_tag = content_tag('p',  local_path_tag + local_path_note + remote_url_tag + remote_url_note)
+        git_remote_tag = content_tag('p', local_path_tag + local_path_note) + content_tag('p', remote_url_tag + remote_url_note)
 
         git_remote_tag
       end
