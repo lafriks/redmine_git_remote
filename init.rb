@@ -13,7 +13,7 @@ Redmine::Plugin.register :redmine_git_remote do
   options = YAML::load( File.open(File.join(PLUGIN_ROOT + '/config', 'settings.yml')))
 
   settings :default => {'git_local_path_default' => options['git_local_path'],
-                        'git_remote_url_prefix_default' => options['git_remote_url_prefix']},
+                        'git_remote_url_prefix_default' => options['git_remote_url_prefix'],
                         'delete_unused_repo_from_disk' => options['delete_unused_repo_from_disk']},
                         :partial => 'settings/redmine_git_remote'
 end
